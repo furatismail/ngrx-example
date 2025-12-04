@@ -1,0 +1,23 @@
+<h1 class="center">Parking Offers</h1>
+
+<div class="offers-list">
+    @if (!(loading$ | async)) {
+        @for (offer of offers$ | async; track offer.id) {
+            <div class="apple-small-card">
+                <p><strong>Price:</strong> {{ offer?.price }} Eur</p>
+                <p><strong>Parking Lot:</strong> {{ offer?.parkingLot }}</p>
+                <p><strong>Parking House:</strong> {{ offer?.parkingHouse }}</p>
+                <p><strong>XXL Space:</strong> {{ offer?.parkingSpaceXXL ? 'Yes' : 'No' }}</p>
+                <p><strong>Suitable for Disabled:</strong> {{ offer?.suitableDisabledPeople ? 'Yes' : 'No' }}</p>
+                <p><strong>Discount:</strong> {{ offer?.discount }}</p>
+                <button (click)="book(offer.id)">Book Now</button>
+            </div>
+        }
+    }
+
+    @if (loading$ | async) {
+        <div class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+    }
+</div>

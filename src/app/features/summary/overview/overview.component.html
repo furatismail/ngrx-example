@@ -1,0 +1,37 @@
+<h1 class="center">Summary</h1>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Parking Information</h2>
+        </div>
+        @if (bookedOffer$ | async; as bookedOffer) {
+            <div class="card-body">
+                <div class="info-item">
+                    <span class="info-label">Parking Lot:</span>
+                    <span class="info-value">{{ bookedOffer.parkingLot }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Parking House:</span>
+                    <span class="info-value">{{ bookedOffer.parkingHouse }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Parking Space XXL:</span>
+                    <span class="info-value">{{ bookedOffer.parkingSpaceXXL ? 'Yes' : 'No' }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Suitable for Disabled People:</span>
+                    <span class="info-value">{{ bookedOffer.suitableDisabledPeople ? 'Yes' : 'No' }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Price:</span>
+                    <span class="info-value">{{ bookedOffer.price | currency }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Discount:</span>
+                    <span class="info-value">{{ bookedOffer.discount }}%</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>

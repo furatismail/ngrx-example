@@ -1,0 +1,70 @@
+<div class="apple-form">
+  <h1>Parking calculator & booking</h1>
+  <form (submit)="onSubmit($event)">
+    <div class="form-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" [field]="carForm.fullname" />
+      @if (carForm.fullname().touched() && carForm.fullname().invalid()) {
+        <div class="error-message">
+          <ul>
+            @for (error of carForm.fullname().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="floor">Floor</label>
+      <select id="floor" [field]="carForm.floor">
+        <option value="" disabled selected>Select your floor</option>
+        @for (floor of floors; track floor) {
+          <option [value]="floor">{{ floor }}</option>
+        }
+      </select>
+      @if (carForm.floor().touched() && carForm.floor().invalid()) {
+        <div class="error-message">
+          <ul>
+            @for (error of carForm.floor().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Type of Car</label>
+      <div class="radio-group">
+        <div>
+          <input type="radio" id="small" value="Small personal car" [field]="carForm.carType" />
+          <label for="small">Small personal car</label>
+        </div>
+        <div>
+          <input type="radio" id="medium"  value="Medium car (SUV)" [field]="carForm.carType" />
+          <label for="medium">Medium car (SUV)</label>
+        </div>
+        <div>
+          <input type="radio" id="big"  value="Bigger car (minivan)" [field]="carForm.carType" />
+          <label for="big">Bigger car (minivan)</label>
+        </div>
+        <div>
+          <input type="radio" id="bus" value="Bus" [field]="carForm.carType" />
+          <label for="bus">Bus</label>
+        </div>
+      </div>
+      @if (carForm.carType().touched() && carForm.carType().invalid()) {
+        <div class="error-message">
+          <ul>
+            @for (error of carForm.carType().errors(); track error) {
+              <li>{{ error.message }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
