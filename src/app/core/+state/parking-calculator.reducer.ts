@@ -36,3 +36,65 @@ export const reducer = createReducer(
         })
     }),
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { ParkingCalculatorState } from './parking-calculator.state';
+// import * as CalculatorActions from './parking-calculator.actions';
+
+// export const initialState: ParkingCalculatorState = {
+//   calculation: undefined,
+//   loading: false,
+//   offers: [],
+//   error: undefined,
+//   bookedOfferId: undefined
+// };
+
+// export function reducer(
+//   state: ParkingCalculatorState = initialState,
+//   action: CalculatorActions.ParkingActions
+// ): ParkingCalculatorState {
+//   switch (action.type) {
+
+//     case CalculatorActions.PARKING_CALCULATE:
+//       return {
+//         ...state,
+//         calculation: action.payload,
+//         loading: true
+//       };
+
+//     case CalculatorActions.PARKING_CALCULATE_SUCCESS:
+//       return {
+//         ...state,
+//         offers: action.payload,
+//         loading: false
+//       };
+
+//     case CalculatorActions.PARKING_CALCULATE_ERROR:
+//       return {
+//         ...state,
+//         error: action.error,
+//         loading: false
+//       };
+
+//     case CalculatorActions.BOOK_OFFER_ID:
+//       return {
+//         ...state,
+//         bookedOfferId: action.payload
+//       };
+
+//     default:
+//       return state;
+//   }
+// }
+

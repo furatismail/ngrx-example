@@ -1,29 +1,3 @@
-// import { inject, Injectable } from '@angular/core';
-// import { of } from 'rxjs';
-// import { catchError, map, switchMap } from 'rxjs/operators';
-// import * as CalculatorActions from './parking-calculator.actions';
-// import { ParkingCalculatorService } from '../services/parking-calculator.service';
-// import { Actions, createEffect, ofType } from '@ngrx/effects';
-// import { ParkingRecord } from '../../shared/interfaces/parking-record.interface';
-
-// @Injectable()
-// export class ParkingCalculatorEffects {
-//     private actions$ = inject(Actions)
-//     private parkingCalculatorService = inject(ParkingCalculatorService)
-
-//     calculateParking$ = createEffect(() =>
-//         this.actions$.pipe(
-//             ofType(CalculatorActions.parkingCalculate),
-//             switchMap(action =>
-//                 this.parkingCalculatorService.calculate(action.payload).pipe(
-//                     map((offers: ParkingRecord[]) => CalculatorActions.parkingCalculateSuccess({ payload: offers })),
-//                     catchError(error => of(CalculatorActions.parkingCalculateError({ error })))
-//                 )
-//             )
-//         )
-//     );
-// }
-
 
 import { inject } from '@angular/core';
 import { of } from 'rxjs';
@@ -48,3 +22,46 @@ export const calculateParkingEffect = createEffect((actions$ = inject(Actions), 
     ),
     { functional: true }
 );
+
+
+
+
+
+
+
+// import { Injectable } from '@angular/core';
+// import { Action } from '@ngrx/store';
+// import { Actions, ofType, createEffect } from '@ngrx/effects';
+// import { of, Observable } from 'rxjs';
+// import { catchError, map, switchMap } from 'rxjs/operators';
+// import * as CalculatorActions from './parking-calculator.actions';
+// import { ParkingCalculatorService } from '../services/parking-calculator.service';
+// import { ParkingRecord } from '../../shared/interfaces/parking-record.interface';
+
+// @Injectable()
+// export class ParkingCalculatorEffects {
+
+//   calculateParking$: Observable<Action> = createEffect(() =>
+//     this.actions$.pipe(
+//       ofType<CalculatorActions.ParkingCalculate>(
+//         CalculatorActions.PARKING_CALCULATE
+//       ),
+//       switchMap(action =>
+//         this.parkingCalculatorService.calculate(action.payload).pipe(
+//           map((offers: ParkingRecord[]) =>
+//             new CalculatorActions.ParkingCalculateSuccess(offers)
+//           ),
+//           catchError(error => {
+//             alert('Něco se pokazilo');
+//             return of(new CalculatorActions.ParkingCalculateError(error));
+//           })
+//         )
+//       )
+//     )
+//   );
+
+//   constructor(
+//     private actions$: Actions,
+//     private parkingCalculatorService: ParkingCalculatorService
+//   ) {}
+// }
